@@ -1,0 +1,84 @@
+diff --git a/target/linux/omap/image/Makefile b/target/linux/omap/image/Makefile
+index 591628c53f..05574b60b7 100644
+--- a/target/linux/omap/image/Makefile
++++ b/target/linux/omap/image/Makefile
+@@ -41,39 +41,48 @@ endef
+ 
+ #uboot-omap-am335x_evm uboot-omap-omap3_beagle uboot-omap-omap4_panda
+ 
+-define Device/ti_am335x-evm
+-  DEVICE_VENDOR := Texas Instruments
+-  DEVICE_MODEL := AM335x EVM
+-endef
+-
+-TARGET_DEVICES += ti_am335x-evm
+-
+-define Device/ti_am335x-bone-black
+-  DEVICE_VENDOR := Texas Instruments
++# define Device/ti_am335x-evm
++#   DEVICE_VENDOR := Texas Instruments
++#   DEVICE_MODEL := AM335x EVM
++# endef
++
++# TARGET_DEVICES += ti_am335x-evm
++
++# define Device/ti_am335x-bone-black
++#   DEVICE_VENDOR := Texas Instruments
++#   DEVICE_MODEL := AM335x BeagleBone Black
++#   DEVICE_DTS := am335x-boneblack
++# endef
++
++# TARGET_DEVICES += ti_am335x-bone-black
++
++# define Device/ti_omap4-panda
++#   DEVICE_VENDOR := PandaBoard.org
++#   DEVICE_MODEL := OMAP4 TI pandaboard
++#   DEVICE_PACKAGES := kmod-usb-net-smsc95xx
++# endef
++
++# TARGET_DEVICES += ti_omap4-panda
++
++# define Device/ti_omap3-beagle
++#   DEVICE_VENDOR := BeagleBoard.org
++#   DEVICE_MODEL := OMAP3 TI beagleboard
++#   # beagleboard doesn't have a network interface, support most common usb net
++#   DEVICE_PACKAGES := \
++# 	kmod-usb-net-asix kmod-usb-net-asix-ax88179 kmod-usb-net-hso \
++# 	kmod-usb-net-kaweth kmod-usb-net-pegasus kmod-usb-net-mcs7830 \
++# 	kmod-usb-net-smsc95xx kmod-usb-net-dm9601-ether
++# endef
++
++# TARGET_DEVICES += ti_omap3-beagle
++
++define Device/ti_am335x-bone-black-router-custom
++  DEVICE_VENDOR := Embedded Network Solutions, Inc.
+   DEVICE_MODEL := AM335x BeagleBone Black
+-  DEVICE_DTS := am335x-boneblack
+-endef
+-
+-TARGET_DEVICES += ti_am335x-bone-black
+-
+-define Device/ti_omap4-panda
+-  DEVICE_VENDOR := PandaBoard.org
+-  DEVICE_MODEL := OMAP4 TI pandaboard
+-  DEVICE_PACKAGES := kmod-usb-net-smsc95xx
+-endef
+-
+-TARGET_DEVICES += ti_omap4-panda
+-
+-define Device/ti_omap3-beagle
+-  DEVICE_VENDOR := BeagleBoard.org
+-  DEVICE_MODEL := OMAP3 TI beagleboard
+-  # beagleboard doesn't have a network interface, support most common usb net
+-  DEVICE_PACKAGES := \
+-	kmod-usb-net-asix kmod-usb-net-asix-ax88179 kmod-usb-net-hso \
+-	kmod-usb-net-kaweth kmod-usb-net-pegasus kmod-usb-net-mcs7830 \
+-	kmod-usb-net-smsc95xx kmod-usb-net-dm9601-ether
++  DEVICE_DTS := ti_am335x-bone-black-router-custom
++  DEVICE_NAME := ti_am335x-bone-black
+ endef
+ 
+-TARGET_DEVICES += ti_omap3-beagle
++TARGET_DEVICES += ti_am335x-bone-black-router-custom
+ 
+ $(eval $(call BuildImage))

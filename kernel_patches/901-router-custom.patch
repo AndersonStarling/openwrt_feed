@@ -1,0 +1,12 @@
+Index: arch/arm/boot/dts/ti/omap/Makefile
+===================================================================
+--- a/arch/arm/boot/dts/ti/omap/Makefile
++++ b/arch/arm/boot/dts/ti/omap/Makefile
+@@ -118,6 +118,7 @@ dtb-$(CONFIG_SOC_AM33XX) += \
+ 	am335x-sl50.dtb \
+ 	am335x-wega-rdk.dtb \
+ 	am335x-osd3358-sm-red.dtb
++dtb-$(CONFIG_SOC_AM33XX) += ti_am335x-bone-black-router-custom.dtb
+ dtb-$(CONFIG_SOC_AM43XX) += \
+ 	am43x-epos-evm.dtb \
+ 	am437x-cm-t43.dtb \
