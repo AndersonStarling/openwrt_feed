@@ -14,8 +14,8 @@ if [ "$SCRIPT_DIR" = "$OPENWRT_DIR" ]; then
 	exit 1
 fi
 
-# Apply all patches
-for patch in "$SCRIPT_DIR/patches/"*.patch; do
+# Apply all build system patches
+for patch in "$SCRIPT_DIR/build_system_patches/patches/"*.patch; do
 	echo "Applying patch: $patch"
 	patch -N -p1 -d "$OPENWRT_DIR" < "$patch"
 done
@@ -37,7 +37,7 @@ for f in "$SCRIPT_DIR/dts/"*; do
 done
 
 KERNEL_PATCH_DIR="$OPENWRT_DIR/target/linux/omap/patches-6.6"
-for f in "$SCRIPT_DIR/kernel_patches/"*; do
+for f in "$SCRIPT_DIR/patches/kernel_patches/"*; do
     echo "Copying patch $(basename "$f")"
     cp -a "$f" "$KERNEL_PATCH_DIR/"
 done
