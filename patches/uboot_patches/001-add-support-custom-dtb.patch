@@ -1,0 +1,11 @@
+--- a/include/configs/am335x_evm.h	2026-06-23 23:54:59.106953346 +0700
++++ b/include/configs/am335x_evm.h	2026-06-23 23:56:37.749022689 +0700
+@@ -117,7 +117,7 @@
+ 		"if test $board_name = A335BONE; then " \
+ 			"setenv fdtfile am335x-bone.dtb; fi; " \
+ 		"if test $board_name = A335BNLT; then " \
+-			"setenv fdtfile am335x-boneblack.dtb; fi; " \
++			"setenv fdtfile ti_am335x-bone-black-router-custom.dtb; fi; " \
+ 		"if test $board_name = A335PBGL; then " \
+ 			"setenv fdtfile am335x-pocketbeagle.dtb; fi; " \
+ 		"if test $board_name = BBBW; then " \

@@ -1,0 +1,13 @@
+diff --git a/package/boot/uboot-omap/Makefile b/package/boot/uboot-omap/Makefile
+index af2327893f..9e0d40f9d6 100644
+--- a/package/boot/uboot-omap/Makefile
++++ b/package/boot/uboot-omap/Makefile
+@@ -29,7 +29,7 @@ endef
+ 
+ define U-Boot/am335x_evm
+   NAME:=AM335x EVM
+-  BUILD_DEVICES:=ti_am335x-evm ti_am335x-bone-black
++  BUILD_DEVICES:=ti_am335x-evm ti_am335x-bone-black ti_am335x-bone-black-router-custom
+ endef
+ 
+ define U-Boot/omap3_beagle
