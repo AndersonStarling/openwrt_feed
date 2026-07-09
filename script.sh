@@ -28,6 +28,9 @@ cp -a "$SCRIPT_DIR/files/." "$OPENWRT_DIR/files/"
 mkdir -p "$OPENWRT_DIR/target/linux/omap/dts"
 cp -a "$SCRIPT_DIR/dts/." "$OPENWRT_DIR/target/linux/omap/dts/"
 
+# Copy kernel config to the OpenWrt tree.
+cp -a "$SCRIPT_DIR/kernel_config/config-6.6" "$OPENWRT_DIR/target/linux/omap/config-6.6"
+
 DTS_DST="$OPENWRT_DIR/target/linux/omap/files/arch/arm/boot/dts/ti/omap"
 mkdir -p "$DTS_DST"
 
