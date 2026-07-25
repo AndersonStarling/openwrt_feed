@@ -53,8 +53,11 @@ for f in "$SCRIPT_DIR/patches/uboot_patches/"*; do
 done
 
 # update feeds.conf.default
+rm "$OPENWRT_DIR/.config"
+cp -f "$SCRIPT_DIR/.config" "$OPENWRT_DIR/.config"
+
 cat "$SCRIPT_DIR/default.config" >> "$OPENWRT_DIR/feeds.conf.default"
 rm -rf "$OPENWRT_DIR/package/feeds"
 "$OPENWRT_DIR/scripts/feeds" update
 "$OPENWRT_DIR/scripts/feeds" install -a
-cp -f "$SCRIPT_DIR/.config" "$OPENWRT_DIR/.config"
+
