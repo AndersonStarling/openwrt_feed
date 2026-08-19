@@ -8,6 +8,7 @@
 #include "am335x-bone-common.dtsi"
 #include "am335x-boneblack-common.dtsi"
 #include "am335x-boneblack-hdmi.dtsi"
+#include "dt-bindings/input/linux-event-codes.h"
 
 / {
 	model = "TI AM335x BeagleBone Black";
@@ -173,6 +174,43 @@
 &baseboard_eeprom {
 	vcc-supply = <&ldo4_reg>;
 };
+
+&user_led
+{
+	lan1_tx_led {
+		label = "lan1_tx_led";
+		gpios = <&gpio1 21 GPIO_ACTIVE_HIGH>;
+		default-state = "off";
+	};
+
+	lan1_rx_led {
+		label = "lan1_rx_led";
+		gpios = <&gpio1 22 GPIO_ACTIVE_HIGH>;
+		default-state = "off";
+	};
+
+	lan2_tx_led {
+		label = "lan2_tx_led";
+		gpios = <&gpio1 23 GPIO_ACTIVE_HIGH>;
+		default-state = "off";
+	};
+
+	lan2_rx_led {
+		label = "lan2_rx_led";
+		gpios = <&gpio1 24 GPIO_ACTIVE_HIGH>;
+		default-state = "off";
+	};
+};
+
+&user_button {
+    reset {
+		label = "reset";
+		gpios = <&gpio0 20 GPIO_ACTIVE_LOW>;
+		linux,code = <KEY_RESTART>;
+	};
+};
+
+
 
 
 

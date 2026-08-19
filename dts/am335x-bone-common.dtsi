@@ -19,39 +19,49 @@
 		stdout-path = &uart0;
 	};
 
-	leds {
+	user_led: leds {
 		pinctrl-names = "default";
 		pinctrl-0 = <&user_leds_s0>;
 
 		compatible = "gpio-leds";
 
-		led2 {
-			label = "beaglebone:green:heartbeat";
-			gpios = <&gpio1 21 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "heartbeat";
-			default-state = "off";
-		};
+		// led2 {
+		// 	label = "beaglebone:green:heartbeat";
+		// 	gpios = <&gpio1 21 GPIO_ACTIVE_HIGH>;
+		// 	linux,default-trigger = "heartbeat";
+		// 	default-state = "off";
+		// };
 
-		led3 {
-			label = "beaglebone:green:mmc0";
-			gpios = <&gpio1 22 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "mmc0";
-			default-state = "off";
-		};
+		// led3 {
+		// 	label = "beaglebone:green:mmc0";
+		// 	gpios = <&gpio1 22 GPIO_ACTIVE_HIGH>;
+		// 	linux,default-trigger = "mmc0";
+		// 	default-state = "off";
+		// };
 
-		led4 {
-			label = "beaglebone:green:usr2";
-			gpios = <&gpio1 23 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "cpu0";
-			default-state = "off";
-		};
+		// led4 {
+		// 	label = "beaglebone:green:usr2";
+		// 	gpios = <&gpio1 23 GPIO_ACTIVE_HIGH>;
+		// 	linux,default-trigger = "cpu0";
+		// 	default-state = "off";
+		// };
 
-		led5 {
-			label = "beaglebone:green:usr3";
-			gpios = <&gpio1 24 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "mmc1";
-			default-state = "off";
-		};
+		// led5 {
+		// 	label = "beaglebone:green:usr3";
+		// 	gpios = <&gpio1 24 GPIO_ACTIVE_HIGH>;
+		// 	linux,default-trigger = "mmc1";
+		// 	default-state = "off";
+		// };
+	};
+
+	user_button: button {
+		pinctrl-names = "default";
+		pinctrl-0 = <&button_pins>;
+
+		poll-interval = <100>;
+
+		compatible = "gpio-keys-polled";
+		status = "okay";
 	};
 
 	vmmcsd_fixed: fixedregulator0 {
@@ -64,7 +74,7 @@
 
 &am33xx_pinmux {
 	pinctrl-names = "default";
-	pinctrl-0 = <&clkout2_pin>;
+	// pinctrl-0 = <&clkout2_pin>;
 
 	user_leds_s0: user-leds-s0-pins {
 		pinctrl-single,pins = <
@@ -96,11 +106,11 @@
 		>;
 	};
 
-	clkout2_pin: clkout2-pins {
-		pinctrl-single,pins = <
-			AM33XX_PADCONF(AM335X_PIN_XDMA_EVENT_INTR1, PIN_OUTPUT_PULLDOWN, MUX_MODE3)	/* xdma_event_intr1.clkout2 */
-		>;
-	};
+	// clkout2_pin: clkout2-pins {
+	// 	pinctrl-single,pins = <
+	// 		AM33XX_PADCONF(AM335X_PIN_XDMA_EVENT_INTR1, PIN_OUTPUT_PULLDOWN, MUX_MODE3)	/* xdma_event_intr1.clkout2 */
+	// 	>;
+	// };
 
 	cpsw_default: cpsw-default-pins {
 		pinctrl-single,pins = <
@@ -184,6 +194,12 @@
 			AM33XX_PADCONF(AM335X_PIN_GPMC_AD5, PIN_INPUT_PULLUP, MUX_MODE1) /* gpmc_ad5.mmc1_dat5 */
 			AM33XX_PADCONF(AM335X_PIN_GPMC_AD6, PIN_INPUT_PULLUP, MUX_MODE1) /* gpmc_ad6.mmc1_dat6 */
 			AM33XX_PADCONF(AM335X_PIN_GPMC_AD7, PIN_INPUT_PULLUP, MUX_MODE1) /* gpmc_ad7.mmc1_dat7 */
+		>;
+	};
+
+	button_pins: button-pins {
+		pinctrl-single,pins = <
+			AM33XX_PADCONF(AM335X_PIN_XDMA_EVENT_INTR1, PIN_INPUT_PULLUP, MUX_MODE7)
 		>;
 	};
 };
