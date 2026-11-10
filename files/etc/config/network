@@ -11,6 +11,7 @@ config device
     option name 'br-lan'
     option type 'bridge'
     list ports 'usb0'
+	list ports 'eth1'
 
 config interface 'lan'
     option device 'br-lan'
